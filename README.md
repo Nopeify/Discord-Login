@@ -47,13 +47,14 @@ Route::get('auth/discord/callback', 'Auth\RegisterController@handleProviderCallb
        ]);
        return $newUser;
      }
-     ```
-     ```php
+```
+```php
      protected $fillable = [
         'name', 'balance', 'email', 'password', 'avatar', 'discord_discrim', 'discord_locale', 'discord_id',
-    ];```
+    ];
+```
     
-   ```php
+ ```php
    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -70,6 +71,7 @@ Route::get('auth/discord/callback', 'Auth\RegisterController@handleProviderCallb
             $table->rememberToken();
             $table->timestamps();
         });
-    }```
+    }
+```
     
     
