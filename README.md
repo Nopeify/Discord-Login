@@ -19,7 +19,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/discord', 'Auth\RegisterController@redirectToProvider')->name('auth');
 Route::get('auth/discord/callback', 'Auth\RegisterController@handleProviderCallback')->name('callback');
 ```
-
+```php
+protected $listen = [
+        'App\Events\Event' => [
+            'App\Listeners\EventListener',
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+          'SocialiteProviders\\Discord\\DiscordExtendSocialite@handle',
+        ],
+    ];
+```
 ```php
      public function handleProviderCallback()
      {
