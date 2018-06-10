@@ -2,8 +2,11 @@
 Simple Larvel auth for Discord. You're welcome.
 
 Checks to see if the user exists or not.
+  
+Console
 ```php
 composer require socialiteproviders/discord
+php artisan make:auth
 ```
 
 App.php  
@@ -102,6 +105,30 @@ User.php
     }
 ```
     
+\vendor\socialiteproviders\discord\provider.php
+```php
+protected $scopes = [
+        'identify',
+        'email',
+        'connections', // custom
+        'guilds', // custom
+
+    ];
+...
+protected function mapUserToObject(array $user)
+    {
+        return (new User())->setRaw($user)->map([
+            'id' => $user['id'],
+            'nickname' => sprintf('%s#%s', $user['username'], $user['discriminator']),
+            'name' => $user['username'],
+            'email' => $user['email'],
+            'avatar' => (is_null($user['avatar'])) ? null : sprintf('https://cdn.discordapp.com/avatars/%s/%s.jpg', $user['id'], $user['avatar']),
+            'discriminator' => $user['discriminator'],
+            'locale' => $user['locale'],
+        ]);
+    }
+```
+
 ```
 http://localhost/auth/discord -> Redirect
 http://localhost/auth/discord/callback? -> Callback
