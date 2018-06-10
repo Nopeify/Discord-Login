@@ -1,5 +1,5 @@
 # Discord-Login
-Simple Larvel auth for Discord. You're welcome.
+Simple Laravel auth for Discord. You're welcome.
 
 + Checks to see if the user exists or not.
 + IF exists, login the user.
