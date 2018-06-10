@@ -1,7 +1,9 @@
 # Discord-Login
 Simple Larvel auth for Discord. You're welcome.
 
-Checks to see if the user exists or not.
++ Checks to see if the user exists or not.
++ IF exists, login the user.
++ If NOT - make user account using Discord api's callback json stuff.
   
 Console
 ```php
