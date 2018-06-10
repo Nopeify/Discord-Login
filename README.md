@@ -6,19 +6,21 @@ Checks to see if the user exists or not.
 composer require socialiteproviders/discord
 ```
 
+App.php  
 ```php
 \SocialiteProviders\Manager\ServiceProvider::class,
 ```
-
+App.php  
 ```php
 Socialite' => \SocialiteProviders\Manager\ServiceProvider::class,
 ```
-
+Web.php  
 ```php
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/discord', 'Auth\RegisterController@redirectToProvider')->name('auth');
 Route::get('auth/discord/callback', 'Auth\RegisterController@handleProviderCallback')->name('callback');
 ```
+EventServiceProvider.php  
 ```php
 protected $listen = [
         'App\Events\Event' => [
@@ -29,6 +31,7 @@ protected $listen = [
         ],
     ];
 ```
+services.php  
 ```php
 'discord' => [
       'client_id' => env('DISCORD_KEY'),
@@ -36,11 +39,13 @@ protected $listen = [
       'redirect' => env('DISCORD_REDIRECT_URI'),
   ],
 ```
+.env  
 ```php
 DISCORD_KEY=
 DISCORD_SECRET=
 DISCORD_REDIRECT_URI=
 ```
+RegisterController.php  
 ```php
      public function handleProviderCallback()
      {
@@ -69,13 +74,15 @@ DISCORD_REDIRECT_URI=
        return $newUser;
      }
 ```
+User.php  
 ```php
      protected $fillable = [
         'name', 'balance', 'email', 'password', 'avatar', 'discord_discrim', 'discord_locale', 'discord_id',
     ];
 ```
-    
- ```php
+
+2014_10_12_000000_create_users_table.php
+```php
    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
