@@ -14,9 +14,9 @@ php artisan make:auth
 App.php  
 ```php
 \SocialiteProviders\Manager\ServiceProvider::class,
-```
-App.php  
-```php
+  
+...
+  
 Socialite' => \SocialiteProviders\Manager\ServiceProvider::class,
 ```
 Web.php  
