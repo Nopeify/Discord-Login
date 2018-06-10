@@ -37,6 +37,11 @@ protected $listen = [
   ],
 ```
 ```php
+DISCORD_KEY=
+DISCORD_SECRET=
+DISCORD_REDIRECT_URI=
+```
+```php
      public function handleProviderCallback()
      {
          $userr = Socialite::driver('discord')->user();
