@@ -1,5 +1,5 @@
 # Discord-Login
-Simple auth for Discord.
+Simple Larvel auth for Discord. You're welcome.
 
 Checks to see if the user exists or not.
 ```php
