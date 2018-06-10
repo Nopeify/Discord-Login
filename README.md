@@ -90,4 +90,7 @@ protected $listen = [
     }
 ```
     
-    
+```
+http://localhost/auth/discord -> Redirect
+http://localhost/auth/discord/callback? -> Callback
+```
