@@ -52,6 +52,11 @@ DISCORD_REDIRECT_URI=
 ```
 RegisterController.php  
 ```php
+    public function redirectToProvider()
+    {
+        return Socialite::driver('discord')->scopes(['identify', 'email', 'guilds', 'connections'])->redirect();
+    }
+    
      public function handleProviderCallback()
      {
          $userr = Socialite::driver('discord')->user();
